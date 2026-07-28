@@ -218,7 +218,7 @@ img {
 }
 
 .hero-image-cn {
-  object-position: 56% 42%;
+  object-position: 56% 18%;
 }
 
 @keyframes hero-image-in {
@@ -286,6 +286,9 @@ img {
 
 .market-tabs button {
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   min-height: 44px;
   padding: 0 2px;
   border: 0;
@@ -293,6 +296,52 @@ img {
   color: rgba(248, 247, 242, 0.72);
   cursor: pointer;
   font-size: 15px;
+}
+
+.country-flag {
+  position: relative;
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  border-radius: 50%;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+  transition:
+    box-shadow 220ms ease,
+    transform 220ms ease;
+}
+
+.country-flag-ru {
+  background: linear-gradient(
+    to bottom,
+    #ffffff 0 33.33%,
+    #2452a4 33.33% 66.66%,
+    #c8323e 66.66% 100%
+  );
+}
+
+.country-flag-cn {
+  background: #c92f38;
+}
+
+.country-flag-cn::after {
+  position: absolute;
+  top: 1px;
+  left: 4px;
+  content: "★";
+  color: #f4ce4b;
+  font-size: 8px;
+  line-height: 1;
+}
+
+.market-tabs button:hover .country-flag,
+.market-tabs button[aria-selected="true"] .country-flag {
+  transform: translateY(-2px) scale(1.08);
+  box-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.28),
+    0 0 0 2px rgba(248, 247, 242, 0.16);
 }
 
 .market-tabs button::after {
@@ -468,12 +517,12 @@ img {
   letter-spacing: 0.045em;
 }
 
-.section-index span:first-child {
+.section-index > span:first-child {
   color: var(--ink);
   font-variant-numeric: tabular-nums;
 }
 
-.section-index span:last-child::before {
+.section-index > span:last-child::before {
   display: inline-block;
   width: 48px;
   height: 1px;
@@ -486,12 +535,34 @@ img {
   color: rgba(255, 255, 255, 0.6);
 }
 
-.section-index-light span:first-child {
+.section-index-light > span:first-child {
   color: var(--white);
 }
 
 .section-index-compact {
   margin-bottom: 38px;
+}
+
+.section-index-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.country-pair {
+  display: inline-flex;
+  align-items: center;
+}
+
+.country-pair .country-flag {
+  width: 18px;
+  height: 18px;
+  border-color: rgba(29, 31, 27, 0.2);
+  box-shadow: 0 2px 7px rgba(29, 31, 27, 0.16);
+}
+
+.country-pair .country-flag + .country-flag {
+  margin-left: -5px;
 }
 
 .intro {
@@ -621,13 +692,20 @@ img {
 }
 
 .process-list li {
+  position: relative;
+  z-index: 0;
   min-height: 330px;
   padding: 30px clamp(22px, 2.5vw, 38px) 36px;
   border-left: 1px solid var(--line-light);
+  background: var(--charcoal);
+  transition:
+    background-color 240ms ease,
+    border-color 240ms ease,
+    box-shadow 240ms ease,
+    transform 240ms cubic-bezier(0.2, 0.75, 0.25, 1);
 }
 
 .process-list li:first-child {
-  padding-left: 0;
   border-left: 0;
 }
 
@@ -768,11 +846,17 @@ img {
 }
 
 .service-card {
+  position: relative;
+  z-index: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 530px;
   padding: clamp(38px, 5vw, 72px);
+  transition:
+    background-color 240ms ease,
+    box-shadow 240ms ease,
+    transform 240ms cubic-bezier(0.2, 0.75, 0.25, 1);
 }
 
 .service-card-dark {
@@ -1233,6 +1317,10 @@ img {
   margin: 0;
   color: rgba(255, 255, 255, 0.56);
   font-size: 14px;
+}
+
+.footer-wordmark {
+  color: var(--white);
 }
 
 .footer-main nav {
@@ -1712,10 +1800,6 @@ img {
     margin-top: 40px;
   }
 
-  .hero h1 br {
-    display: none;
-  }
-
   .hero-actions,
   .button-primary {
     width: 100%;
@@ -1780,6 +1864,45 @@ img {
     align-items: flex-start;
     flex-direction: column;
     gap: 10px;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .process-list li:hover {
+    z-index: 2;
+    border-color: rgba(224, 216, 204, 0.48);
+    background: #2c302a;
+    box-shadow:
+      0 30px 64px rgba(0, 0, 0, 0.34),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    transform: translateY(-6px);
+  }
+
+  .process-list li:hover .process-number {
+    color: #d7c9b6;
+  }
+
+  .process-list li:hover p {
+    color: rgba(255, 255, 255, 0.78);
+  }
+
+  .service-card:hover,
+  .service-card:focus-within {
+    z-index: 2;
+    box-shadow:
+      0 30px 70px rgba(29, 31, 27, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.22);
+    transform: translateY(-9px) scale(1.012);
+  }
+
+  .service-card-dark:hover,
+  .service-card-dark:focus-within {
+    background: #445240;
+  }
+
+  .service-card-sand:hover,
+  .service-card-sand:focus-within {
+    background: #e9e2d8;
   }
 }
 

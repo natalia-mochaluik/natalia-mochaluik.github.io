@@ -42,6 +42,23 @@
 - Fine one-pixel dividers; no glass panels or heavy shadows.
 - Desktop section spacing: `112–156 px`; mobile: `72–96 px`.
 
+## Brand identity
+
+- Current public name: «Брачное агентство».
+- The identity is deliberately typographic and restrained; no emblem is used
+  in the current version.
+- The service is described directly as a marriage agency for serious
+  relationships in Russia and China.
+- No pink, hearts, rings or decorative wedding clichés.
+
+## Interaction finish
+
+- Process and secondary service cards gain lift, a controlled shadow and a
+  subtle surface change on hover-capable devices.
+- Hover motion is disabled by the existing reduced-motion preference.
+- Russia and China tabs use small circular flag signs; the selected or hovered
+  sign lifts slightly while the text remains the primary label.
+
 ## Hero
 
 - Height: at least `calc(100svh - 86px)`.
@@ -55,8 +72,11 @@
 
 - `hero-couple.jpg`: selected Russia hero.
 - `couple-china-city.jpg`: China hero state and international section.
-- `couple-china-club-no-glass.jpg`: closed-club section; the original glass was
-  removed and the woman's hands were restored naturally.
+- The China hero uses an upper focal point (`56% 18%`) so both faces remain
+  visible in wide first-viewport crops.
+- `couple-china-club-no-glass.jpg`: closed-club section; re-rendered as a more
+  natural editorial photograph with realistic skin, hands, fabric and optical
+  texture. The scene contains no glass or alcohol.
 - `couple-russia-mature.jpg`: photography/service section.
 - Every temporary AI photograph is marked as illustrative and must remain easy
   to replace with the photographer's future original work.

@@ -84,6 +84,15 @@ const faqs = [
   },
 ];
 
+function CountryFlag({ country }: { country: Market }) {
+  return (
+    <span
+      className={`country-flag country-flag-${country}`}
+      aria-hidden="true"
+    />
+  );
+}
+
 export function MarriageAgencySite() {
   const [market, setMarket] = useState<Market>("ru");
   const [menuOpen, setMenuOpen] = useState(false);
@@ -207,7 +216,8 @@ export function MarriageAgencySite() {
                   aria-controls="hero-scene"
                   onClick={() => setMarket("ru")}
                 >
-                  Россия
+                  <CountryFlag country="ru" />
+                  <span>Россия</span>
                 </button>
                 <button
                   type="button"
@@ -216,7 +226,8 @@ export function MarriageAgencySite() {
                   aria-controls="hero-scene"
                   onClick={() => setMarket("cn")}
                 >
-                  Китай
+                  <CountryFlag country="cn" />
+                  <span>Китай</span>
                 </button>
               </div>
             </div>
@@ -421,7 +432,13 @@ export function MarriageAgencySite() {
           <div className="geography-copy">
             <div className="section-index section-index-compact">
               <span>04</span>
-              <span>Россия и Китай</span>
+              <span className="section-index-label">
+                Россия и Китай
+                <span className="country-pair" aria-hidden="true">
+                  <CountryFlag country="ru" />
+                  <CountryFlag country="cn" />
+                </span>
+              </span>
             </div>
             <p className="geography-mark" aria-hidden="true">
               RU <span>—</span> CN

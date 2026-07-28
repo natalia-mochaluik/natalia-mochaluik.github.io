@@ -1,12 +1,12 @@
 {
-  "version": 5,
+  "version": 6,
   "project_title": "Современное брачное агентство",
   "project_root": "/Users/natalia/Documents/Брачное агенство",
   "current_stage": "visual-qa",
   "status": "complete",
-  "note": "Responsive production build and desktop/mobile visual QA passed",
+  "note": "Original marriage-agency identity restored; photoreal club image and corrected interaction details retained",
   "created_at": "2026-07-28T20:09:28+00:00",
-  "updated_at": "2026-07-29T00:49:59+03:00",
+  "updated_at": "2026-07-29T01:57:39+03:00",
   "history": [
     {
       "at": "2026-07-28T20:09:28+00:00",
@@ -139,6 +139,78 @@
       "stage": "visual-qa",
       "status": "complete",
       "note": "Approved desktop composition, mobile layout and core interactions passed visual QA"
+    },
+    {
+      "at": "2026-07-29T00:59:22+03:00",
+      "stage": "build",
+      "status": "in_progress",
+      "note": "User requested a custom brand mark, animated Russia-China flag signs and dimensional hover treatment for cards"
+    },
+    {
+      "at": "2026-07-29T01:06:57+03:00",
+      "stage": "build",
+      "status": "in_progress",
+      "note": "China hero crop raised to preserve both faces; brand naming will be selected before the final logo is generated"
+    },
+    {
+      "at": "2026-07-29T01:10:58+03:00",
+      "stage": "build",
+      "status": "complete",
+      "note": "China hero focal-point correction and requested hover and flag treatments compile successfully"
+    },
+    {
+      "at": "2026-07-29T01:10:58+03:00",
+      "stage": "visual-qa",
+      "status": "complete",
+      "note": "Both faces remain visible in the China hero at 1440x900 and 375x844; mobile headline wrapping also passed"
+    },
+    {
+      "at": "2026-07-29T01:10:58+03:00",
+      "stage": "style-selection",
+      "status": "awaiting_user",
+      "note": "Awaiting selection from the standalone brand-name shortlist before generating the final logo"
+    },
+    {
+      "at": "2026-07-29T01:34:22+03:00",
+      "stage": "style-selection",
+      "status": "complete",
+      "note": "User selected VZAIMNO with the conceptual VO endpoint mark and a Cyrillic wordmark"
+    },
+    {
+      "at": "2026-07-29T01:34:22+03:00",
+      "stage": "build",
+      "status": "complete",
+      "note": "Brand promise, logo lockups, metadata, revised club image and corrected process-card hover spacing implemented"
+    },
+    {
+      "at": "2026-07-29T01:34:22+03:00",
+      "stage": "visual-qa",
+      "status": "complete",
+      "note": "Desktop and mobile brand layouts, revised club image, production build and rendered-site tests passed"
+    },
+    {
+      "at": "2026-07-29T01:48:02+03:00",
+      "stage": "build",
+      "status": "complete",
+      "note": "All public-facing copy rewritten in natural Russian while preserving layout, legal caveats and brand tone"
+    },
+    {
+      "at": "2026-07-29T01:48:02+03:00",
+      "stage": "visual-qa",
+      "status": "complete",
+      "note": "Humanized copy passed desktop and mobile layout QA; production build and rendered-site tests remain green"
+    },
+    {
+      "at": "2026-07-29T01:50:33+03:00",
+      "stage": "build",
+      "status": "complete",
+      "note": "User rejected the humanized rewrite; previous editorial copy restored and hero title returned to «Брачное агентство»"
+    },
+    {
+      "at": "2026-07-29T01:57:39+03:00",
+      "stage": "build",
+      "status": "complete",
+      "note": "User reverted the VZAIMNO naming and VO logo experiment; public identity, metadata and copy returned to «Брачное агентство» while photo and interaction improvements were retained"
     }
   ]
 }
