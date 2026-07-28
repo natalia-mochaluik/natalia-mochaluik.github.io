@@ -1,0 +1,144 @@
+{
+  "version": 5,
+  "project_title": "Современное брачное агентство",
+  "project_root": "/Users/natalia/Documents/Брачное агенство",
+  "current_stage": "visual-qa",
+  "status": "complete",
+  "note": "Responsive production build and desktop/mobile visual QA passed",
+  "created_at": "2026-07-28T20:09:28+00:00",
+  "updated_at": "2026-07-29T00:49:59+03:00",
+  "history": [
+    {
+      "at": "2026-07-28T20:09:28+00:00",
+      "stage": "intake",
+      "status": "in_progress",
+      "note": "State initialized"
+    },
+    {
+      "at": "2026-07-28T20:11:38+00:00",
+      "stage": "site-model-selection",
+      "status": "awaiting_user",
+      "note": "Brief and market service scan complete; hybrid model recommended for approval"
+    },
+    {
+      "at": "2026-07-28T20:17:51+00:00",
+      "stage": "experience-selection",
+      "status": "complete",
+      "note": "Hybrid model and Core experience approved; Russia and China scope added"
+    },
+    {
+      "at": "2026-07-28T20:17:51+00:00",
+      "stage": "reference-research",
+      "status": "in_progress",
+      "note": "Preparing visual reference and temporary editorial photo asset directions"
+    },
+    {
+      "at": "2026-07-28T20:26:45+00:00",
+      "stage": "reference-research",
+      "status": "in_progress",
+      "note": "Russia-China positioning fixed; four temporary editorial couple images generated and visually checked"
+    },
+    {
+      "at": "2026-07-28T20:47:06+00:00",
+      "stage": "reference-selection",
+      "status": "awaiting_user",
+      "note": "Nine numbered visual references shortlisted; awaiting selection of 3-6 candidates"
+    },
+    {
+      "at": "2026-07-28T20:53:32+00:00",
+      "stage": "reference-selection",
+      "status": "complete",
+      "note": "References 01, 02 and 05 selected; alcohol, wine glasses and nightlife imagery explicitly excluded"
+    },
+    {
+      "at": "2026-07-28T20:53:32+00:00",
+      "stage": "ux-foundation",
+      "status": "in_progress",
+      "note": "Synthesizing interface rules and screen scope from selected references"
+    },
+    {
+      "at": "2026-07-28T20:55:00+00:00",
+      "stage": "ux-foundation",
+      "status": "complete",
+      "note": "Navigation, CTA hierarchy, content order, responsive and accessibility constraints fixed"
+    },
+    {
+      "at": "2026-07-28T20:55:00+00:00",
+      "stage": "screen-plan",
+      "status": "complete",
+      "note": "Hybrid route and section system fixed; composition selection limited to Home first viewport at 1440x900"
+    },
+    {
+      "at": "2026-07-28T20:55:00+00:00",
+      "stage": "composition-architecture",
+      "status": "in_progress",
+      "note": "Preparing three bounded first-viewport composition candidates"
+    },
+    {
+      "at": "2026-07-28T21:01:10+00:00",
+      "stage": "composition-generation",
+      "status": "in_progress",
+      "note": "Generating three separate first-viewport comps from the approved prompt pack"
+    },
+    {
+      "at": "2026-07-28T21:13:02+00:00",
+      "stage": "composition-generation",
+      "status": "complete",
+      "note": "Three first-viewport comps generated and QA passed; Candidate B selected by user"
+    },
+    {
+      "at": "2026-07-28T21:13:02+00:00",
+      "stage": "composition-selection",
+      "status": "awaiting_user",
+      "note": "Candidate B revised with the user-preferred seated couple photo; awaiting visual confirmation before style exploration"
+    },
+    {
+      "at": "2026-07-28T21:46:27+00:00",
+      "stage": "composition-selection",
+      "status": "complete",
+      "note": "User selected full-bleed clarity layout with the preferred seated couple photograph"
+    },
+    {
+      "at": "2026-07-28T21:46:27+00:00",
+      "stage": "style-selection",
+      "status": "complete",
+      "note": "User approved the dark editorial full-photo style shown in the selected screenshot"
+    },
+    {
+      "at": "2026-07-28T21:46:27+00:00",
+      "stage": "page-system",
+      "status": "complete",
+      "note": "One-page editorial section system expanded for services, process, club, photography, Russia-China, FAQ and application"
+    },
+    {
+      "at": "2026-07-28T21:46:27+00:00",
+      "stage": "experience-blueprint",
+      "status": "complete",
+      "note": "Core interactions specified: geography switch, accessible mobile menu, FAQ and local demo form"
+    },
+    {
+      "at": "2026-07-28T21:46:27+00:00",
+      "stage": "visual-spec",
+      "status": "complete",
+      "note": "Final visual tokens, approved hero, image inventory and responsive rules locked"
+    },
+    {
+      "at": "2026-07-28T21:46:27+00:00",
+      "stage": "build",
+      "status": "in_progress",
+      "note": "Responsive Vinext site implemented; preparing production build and visual QA"
+    },
+    {
+      "at": "2026-07-29T00:49:59+03:00",
+      "stage": "build",
+      "status": "complete",
+      "note": "Production Vinext build completed without errors"
+    },
+    {
+      "at": "2026-07-29T00:49:59+03:00",
+      "stage": "visual-qa",
+      "status": "complete",
+      "note": "Approved desktop composition, mobile layout and core interactions passed visual QA"
+    }
+  ]
+}
