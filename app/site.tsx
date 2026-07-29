@@ -14,17 +14,29 @@ const navItems = [
 
 const heroScenes: Record<
   Market,
-  { src: string; alt: string; caption: string }
+  {
+    src: string;
+    mobileSrc?: string;
+    alt: string;
+    caption: string;
+    width: number;
+    height: number;
+  }
 > = {
   ru: {
     src: "/images/hero-couple.jpg",
+    mobileSrc: "/images/hero-couple-mobile-v3.jpg",
     alt: "Пара разговаривает в современном интерьере",
     caption: "Россия",
+    width: 1536,
+    height: 1024,
   },
   cn: {
     src: "/images/couple-china-city.jpg",
     alt: "Иллюстративный образ международной пары в современной городской среде",
     caption: "Китай",
+    width: 1003,
+    height: 1568,
   },
 };
 
@@ -81,6 +93,11 @@ const faqs = [
     question: "Можно ли заказать фотосъёмку отдельно?",
     answer:
       "Да. После короткой консультации фотограф поможет определить задачу, подготовиться к съёмке и собрать цельное персональное портфолио.",
+  },
+  {
+    question: "Как проходят консультации психолога и игровые вечера?",
+    answer:
+      "Профессиональный психолог работает с парами в отдельном конфиденциальном формате. Женские игровые вечера проходят небольшими группами с игропрактиком; тему и правила каждой встречи мы сообщаем заранее.",
   },
 ];
 
@@ -196,21 +213,32 @@ export function MarriageAgencySite() {
       </header>
 
       <main id="main-content">
-        <section id="top" className="hero" aria-labelledby="hero-title">
+        <section
+          id="top"
+          className={`hero hero-${market}`}
+          aria-labelledby="hero-title"
+        >
           <div
             id="hero-scene"
             className={`hero-media hero-media-${market}`}
             aria-live="polite"
           >
-            <img
-              key={market}
-              className={`hero-image hero-image-${market}`}
-              src={heroScenes[market].src}
-              width="1536"
-              height="1024"
-              alt={heroScenes[market].alt}
-              fetchPriority="high"
-            />
+            <picture key={market}>
+              {heroScenes[market].mobileSrc && (
+                <source
+                  media="(max-width: 760px)"
+                  srcSet={heroScenes[market].mobileSrc}
+                />
+              )}
+              <img
+                className={`hero-image hero-image-${market}`}
+                src={heroScenes[market].src}
+                width={heroScenes[market].width}
+                height={heroScenes[market].height}
+                alt={heroScenes[market].alt}
+                fetchPriority="high"
+              />
+            </picture>
           </div>
           <div className="hero-overlay" />
           <div className="hero-bottom-overlay" />
@@ -426,6 +454,41 @@ export function MarriageAgencySite() {
               </div>
             </article>
           </div>
+
+          <div id="support-services" className="service-pair service-pair-support">
+            <article className="service-card service-card-sand">
+              <span className="service-card-number">04</span>
+              <div>
+                <p className="service-kicker">Психолог для пар</p>
+                <h3>Поддержка пары и честный диалог</h3>
+                <p>
+                  Профессиональный психолог помогает партнёрам лучше слышать
+                  друг друга, обсуждать сложные темы и бережно выстраивать
+                  отношения. Формат работы определяем на первой консультации.
+                </p>
+                <a className="text-link" href="#apply">
+                  Обсудить консультацию
+                  <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </article>
+            <article className="service-card service-card-dark">
+              <span className="service-card-number">05</span>
+              <div>
+                <p className="service-kicker">Женские игровые вечера</p>
+                <h3>Игры, разговор и новые знакомства</h3>
+                <p>
+                  Камерные встречи с профессиональным игропрактиком. Карточные
+                  и игровые форматы помогают участницам общаться, лучше
+                  понимать себя и по-новому смотреть на отношения.
+                </p>
+                <a className="text-link text-link-light" href="#club">
+                  Узнать о вечерах
+                  <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </article>
+          </div>
         </section>
 
         <section className="geography" aria-labelledby="geography-title">
@@ -493,6 +556,11 @@ export function MarriageAgencySite() {
                 <p>
                   <span>03</span>
                   Конфиденциальность и уважение к личным границам
+                </p>
+                <p>
+                  <span>04</span>
+                  Отдельные игровые вечера для девушек с профессиональным
+                  игропрактиком
                 </p>
               </div>
               <a className="button button-paper" href="#apply">
@@ -568,9 +636,9 @@ export function MarriageAgencySite() {
                   сильную визуальную подачу — без игры в алгоритмы и громких обещаний.
                 </p>
                 <p>
-                  Подбор ведётся лично. Фотограф работает внутри команды.
-                  Решения о знакомстве принимаются только с уважением к обеим
-                  сторонам.
+                  Подбор ведётся лично. В команде работают фотограф,
+                  профессиональный психолог и игропрактик. Каждое направление
+                  строится с уважением к личным границам участников.
                 </p>
               </div>
             </div>
@@ -656,6 +724,8 @@ export function MarriageAgencySite() {
                   <option value="international">Россия — Китай</option>
                   <option value="club">Закрытый клуб</option>
                   <option value="photography">Фотография и портфолио</option>
+                  <option value="psychologist">Психолог для пары</option>
+                  <option value="game-evenings">Женские игровые вечера</option>
                   <option value="question">Хочу задать вопрос</option>
                 </select>
               </label>

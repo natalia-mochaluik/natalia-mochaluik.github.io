@@ -56,6 +56,19 @@
   landscape frames; faces and bodies are no longer cut off.
 - Intrinsic image dimensions now match the two portrait source files, preventing
   unstable layout calculations while the photographs load.
+- The services grid now includes professional couple psychology and facilitated
+  women game evenings. The new cards remain a balanced two-column pair at
+  `1440 × 900` and become two full-width sequential cards at `390 × 844`.
+- The club description, team copy, FAQ and application selector consistently
+  expose the psychologist and game-practitioner formats.
+- The Russia hero uses a dedicated photorealistic `9:16` mobile asset with both
+  faces above the headline; the original approved horizontal asset remains
+  unchanged on desktop.
+- The China mobile hero uses the full portrait source rather than a destructive
+  cover crop. Both hero states keep both faces visible at `390 × 844`.
+- The mature-couple, international and club images use portrait slots on mobile;
+  browser captures confirm that every photographed pair keeps both faces in
+  frame.
 - The production build completes without errors.
 - The two rendered-site tests pass.
 - Desktop and mobile browser checks show no console errors or horizontal

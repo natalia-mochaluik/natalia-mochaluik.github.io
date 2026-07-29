@@ -853,6 +853,10 @@ img {
   grid-template-columns: 1fr 1fr;
 }
 
+.service-pair-support {
+  border-top: 1px solid rgba(29, 31, 27, 0.1);
+}
+
 .service-card {
   position: relative;
   z-index: 0;
@@ -1573,9 +1577,11 @@ img {
     background:
       linear-gradient(
         90deg,
-        rgba(24, 25, 23, 0.95) 0%,
-        rgba(24, 25, 23, 0.82) 62%,
-        rgba(24, 25, 23, 0.36) 100%
+        rgba(24, 25, 23, 0.96) 0%,
+        rgba(24, 25, 23, 0.9) 38%,
+        rgba(24, 25, 23, 0.64) 55%,
+        rgba(24, 25, 23, 0.22) 76%,
+        rgba(24, 25, 23, 0.08) 100%
       ),
       linear-gradient(
         0deg,
@@ -1585,7 +1591,7 @@ img {
   }
 
   .hero-image-ru {
-    object-position: 62% 22%;
+    object-position: 50% 30%;
   }
 
   .hero-image-cn {
@@ -1727,6 +1733,10 @@ img {
     grid-template-columns: 1fr;
   }
 
+  .service-pair-support {
+    border-top: 0;
+  }
+
   .service-card {
     min-height: 450px;
     padding: 34px 28px 44px;
@@ -1734,6 +1744,14 @@ img {
 
   .geography-copy {
     padding: 72px var(--side) 84px;
+  }
+
+  .geography-image {
+    aspect-ratio: 2 / 3;
+  }
+
+  .geography-image img {
+    object-position: center;
   }
 
   .club-copy {
@@ -1815,7 +1833,29 @@ img {
   }
 
   .hero-image-ru {
-    object-position: 38% 22%;
+    object-position: center;
+  }
+
+  .hero-image-cn {
+    object-fit: contain;
+    object-position: center top;
+    background: var(--charcoal);
+  }
+
+  .hero-cn .hero-overlay {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(24, 25, 23, 0.9) 0%,
+        rgba(24, 25, 23, 0.68) 40%,
+        rgba(24, 25, 23, 0.28) 72%,
+        rgba(24, 25, 23, 0.1) 100%
+      ),
+      linear-gradient(
+        0deg,
+        rgba(24, 25, 23, 0.82) 0%,
+        rgba(24, 25, 23, 0.12) 66%
+      );
   }
 
   .hero-inner {

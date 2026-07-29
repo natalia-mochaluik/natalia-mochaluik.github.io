@@ -37,12 +37,15 @@ test("server-renders the Vzaimno identity with the original agency copy", async 
   assert.match(html, /Личный подбор, интервью и организация встреч/);
   assert.match(html, /Конфиденциально, без публичных анкет/);
   assert.match(html, /Россия и Китай/);
+  assert.match(html, /Профессиональный психолог помогает партнёрам/);
+  assert.match(html, /Женские игровые вечера/);
+  assert.match(html, /профессиональным игропрактиком/i);
   assert.doesNotMatch(html, /Почему «Взаимно»|Первая и последняя буквы VZAIMNO/i);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape/i);
 });
 
 test("keeps the approved image, interaction fixes and local-only form state", async () => {
-  const [site, css, clubImage, logo, lightLogo, mark] = await Promise.all([
+  const [site, css, clubImage, mobileHero, logo, lightLogo, mark] = await Promise.all([
     readFile(new URL("../app/site.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
     stat(
@@ -51,6 +54,7 @@ test("keeps the approved image, interaction fixes and local-only form state", as
         import.meta.url,
       ),
     ),
+    stat(new URL("../public/images/hero-couple-mobile-v3.jpg", import.meta.url)),
     stat(new URL("../public/images/logo-vzaimno-primary-v5.png", import.meta.url)),
     stat(
       new URL(
@@ -62,12 +66,14 @@ test("keeps the approved image, interaction fixes and local-only form state", as
   ]);
 
   assert.ok(clubImage.size > 0);
+  assert.ok(mobileHero.size > 0);
   assert.ok(logo.size > 0);
   assert.ok(lightLogo.size > 0);
   assert.ok(mark.size > 0);
   assert.match(site, /className="brand-logo"/);
   assert.doesNotMatch(site, /className="mark-story"/);
   assert.match(site, /country-flag country-flag-/);
+  assert.match(site, /hero-couple-mobile-v3\.jpg/);
   assert.match(site, /Демонстрационная версия/);
   assert.match(css, /\.brand-logo/);
   assert.match(css, /\.process-list li:hover/);

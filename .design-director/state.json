@@ -4,9 +4,9 @@
   "project_root": "/Users/natalia/Documents/Брачное агенство",
   "current_stage": "visual-qa",
   "status": "complete",
-  "note": "Mobile hero focal placement and portrait couple photography corrected; production build and rendered-site tests passed",
+  "note": "Psychology and facilitated game-evening services added; dedicated mobile imagery keeps every photographed pair in frame",
   "created_at": "2026-07-28T20:09:28+00:00",
-  "updated_at": "2026-07-29T12:52:36+03:00",
+  "updated_at": "2026-07-29T13:24:29+03:00",
   "history": [
     {
       "at": "2026-07-28T20:09:28+00:00",
@@ -241,6 +241,24 @@
       "stage": "visual-qa",
       "status": "complete",
       "note": "Mobile couple framing, intrinsic image dimensions and rendered-site tests passed"
+    },
+    {
+      "at": "2026-07-29T13:18:00+03:00",
+      "stage": "build",
+      "status": "in_progress",
+      "note": "Adding professional couple psychology and facilitated women game-evening services across responsive layouts"
+    },
+    {
+      "at": "2026-07-29T13:24:29+03:00",
+      "stage": "build",
+      "status": "complete",
+      "note": "Psychologist, women game-evening services and dedicated mobile photography implemented"
+    },
+    {
+      "at": "2026-07-29T13:24:29+03:00",
+      "stage": "visual-qa",
+      "status": "complete",
+      "note": "Responsive service cards and all couple photographs passed 1440x900 and 390x844 browser checks without horizontal overflow"
     }
   ]
 }
