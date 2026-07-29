@@ -112,17 +112,25 @@ img {
   background: rgba(251, 250, 247, 0.985);
 }
 
-.wordmark,
-.footer-wordmark {
+.wordmark {
+  display: flex;
+  align-items: center;
   width: fit-content;
-  font-size: 27px;
-  font-weight: 520;
-  letter-spacing: -0.045em;
-  line-height: 1;
 }
 
-.wordmark span {
-  font-weight: 680;
+.brand-logo {
+  width: clamp(204px, 17vw, 238px);
+  height: auto;
+}
+
+.footer-wordmark {
+  display: block;
+  width: fit-content;
+}
+
+.footer-brand-logo {
+  width: 248px;
+  height: auto;
 }
 
 .desktop-nav {
@@ -1401,7 +1409,10 @@ img {
   .wordmark {
     position: relative;
     z-index: 102;
-    font-size: 23px;
+  }
+
+  .brand-logo {
+    width: 212px;
   }
 
   .desktop-nav,
@@ -1778,8 +1789,8 @@ img {
     --side: 20px;
   }
 
-  .wordmark {
-    font-size: 19px;
+  .brand-logo {
+    width: 188px;
   }
 
   .hero {

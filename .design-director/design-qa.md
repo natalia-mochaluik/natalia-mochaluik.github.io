@@ -9,10 +9,14 @@
   `.design-director/assets/qa/implementation-china-crop-1440x900.png`
 - China mobile state:
   `.design-director/assets/qa/implementation-china-crop-375x844-v2.png`
-- Restored agency identity, desktop:
+- Temporary text-only identity rollback, desktop:
   `.design-director/assets/qa/implementation-restored-agency-1440x900.png`
-- Restored agency identity, mobile:
+- Temporary text-only identity rollback, mobile:
   `.design-director/assets/qa/implementation-restored-agency-375x844.png`
+- Final `VO + ВЗАИМНО` identity with original copy, desktop:
+  `.design-director/assets/qa/implementation-vzaimno-original-copy-1440x900.png`
+- Final `VO + ВЗАИМНО` identity with original copy, mobile:
+  `.design-director/assets/qa/implementation-vzaimno-original-copy-375x844.png`
 - Revised club photograph:
   `.design-director/assets/qa/implementation-club-photoreal-1440x900.png`
 - Revised process-card spacing:
@@ -31,8 +35,13 @@
 - The mobile headline now keeps a semantic line break and no longer joins
   «агентство» and «для».
 - Navigation, mobile menu, geography switch, FAQ and local application confirmation were exercised in the browser.
-- The public name, header wordmark, metadata and footer are restored to
-  «Брачное агентство»; the discarded VO identity is not present on the site.
+- The approved `VO + ВЗАИМНО` identity is restored in the header, footer,
+  browser metadata and icon.
+- The earlier editorial copy remains intact: the hero still reads «Брачное
+  агентство для серьёзных отношений» and retains the original personal
+  selection and confidentiality message.
+- The discarded explanatory VO story and later humanized rewrite are not
+  present on the public page.
 - The club photograph was re-rendered with more natural skin, hands, fabric,
   light falloff and camera texture; it contains no glass or alcohol-related
   object.
@@ -41,6 +50,8 @@
   longer appears cramped against the left boundary.
 - The production build completes without errors.
 - The two rendered-site tests pass.
+- Desktop and mobile browser checks show no console errors or horizontal
+  overflow.
 
 ## Severity
 

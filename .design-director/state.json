@@ -1,12 +1,12 @@
 {
-  "version": 6,
-  "project_title": "Современное брачное агентство",
+  "version": 5,
+  "project_title": "Взаимно — брачное агентство",
   "project_root": "/Users/natalia/Documents/Брачное агенство",
   "current_stage": "visual-qa",
   "status": "complete",
-  "note": "Original marriage-agency identity restored; photoreal club image and corrected interaction details retained",
+  "note": "Approved VO and VZAIMNO identity restored with the original editorial marriage-agency copy; desktop and mobile QA passed",
   "created_at": "2026-07-28T20:09:28+00:00",
-  "updated_at": "2026-07-29T01:57:39+03:00",
+  "updated_at": "2026-07-29T08:34:06+00:00",
   "history": [
     {
       "at": "2026-07-28T20:09:28+00:00",
@@ -211,6 +211,18 @@
       "stage": "build",
       "status": "complete",
       "note": "User reverted the VZAIMNO naming and VO logo experiment; public identity, metadata and copy returned to «Брачное агентство» while photo and interaction improvements were retained"
+    },
+    {
+      "at": "2026-07-29T07:15:45+00:00",
+      "stage": "build",
+      "status": "in_progress",
+      "note": "Restoring the selected VZAIMNO and VO identity while preserving the earlier editorial copy"
+    },
+    {
+      "at": "2026-07-29T08:34:06+00:00",
+      "stage": "visual-qa",
+      "status": "complete",
+      "note": "Approved VO and VZAIMNO identity restored with the original editorial marriage-agency copy; desktop and mobile QA passed"
     }
   ]
 }

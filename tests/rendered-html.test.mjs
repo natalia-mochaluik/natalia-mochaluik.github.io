@@ -23,7 +23,7 @@ async function render() {
   );
 }
 
-test("server-renders the marriage agency identity and core promise", async () => {
+test("server-renders the Vzaimno identity with the original agency copy", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
@@ -31,18 +31,18 @@ test("server-renders the marriage agency identity and core promise", async () =>
   const html = await response.text();
   assert.match(
     html,
-    /<title>Брачное агентство для серьёзных отношений<\/title>/i,
+    /<title>Взаимно — брачное агентство для серьёзных отношений<\/title>/i,
   );
-  assert.match(html, /Брачное агентство — наверх/);
+  assert.match(html, /logo-vzaimno-primary-v5\.png/);
   assert.match(html, /Личный подбор, интервью и организация встреч/);
   assert.match(html, /Конфиденциально, без публичных анкет/);
   assert.match(html, /Россия и Китай/);
-  assert.doesNotMatch(html, /VZAIMNO|logo-vzaimno|Почему «Взаимно»/i);
+  assert.doesNotMatch(html, /Почему «Взаимно»|Первая и последняя буквы VZAIMNO/i);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape/i);
 });
 
 test("keeps the approved image, interaction fixes and local-only form state", async () => {
-  const [site, css, clubImage, favicon] = await Promise.all([
+  const [site, css, clubImage, logo, lightLogo, mark] = await Promise.all([
     readFile(new URL("../app/site.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
     stat(
@@ -51,13 +51,25 @@ test("keeps the approved image, interaction fixes and local-only form state", as
         import.meta.url,
       ),
     ),
-    stat(new URL("../public/favicon.svg", import.meta.url)),
+    stat(new URL("../public/images/logo-vzaimno-primary-v5.png", import.meta.url)),
+    stat(
+      new URL(
+        "../public/images/logo-vzaimno-primary-light-v5.png",
+        import.meta.url,
+      ),
+    ),
+    stat(new URL("../public/images/logo-vzaimno-mark-v5.png", import.meta.url)),
   ]);
 
   assert.ok(clubImage.size > 0);
-  assert.ok(favicon.size > 0);
+  assert.ok(logo.size > 0);
+  assert.ok(lightLogo.size > 0);
+  assert.ok(mark.size > 0);
+  assert.match(site, /className="brand-logo"/);
+  assert.doesNotMatch(site, /className="mark-story"/);
   assert.match(site, /country-flag country-flag-/);
   assert.match(site, /Демонстрационная версия/);
+  assert.match(css, /\.brand-logo/);
   assert.match(css, /\.process-list li:hover/);
   assert.match(css, /\.hero-image-cn\s*\{[^}]*object-position:\s*56% 18%/s);
 });

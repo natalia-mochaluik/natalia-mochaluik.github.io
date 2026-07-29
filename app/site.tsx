@@ -130,8 +130,14 @@ export function MarriageAgencySite() {
       </a>
 
       <header className="site-header">
-        <a className="wordmark" href="#top" aria-label="Брачное агентство — наверх">
-          <span>Брачное</span> агентство
+        <a className="wordmark" href="#top" aria-label="Взаимно — наверх">
+          <img
+            className="brand-logo"
+            src="/images/logo-vzaimno-primary-v5.png"
+            width="1301"
+            height="244"
+            alt="Взаимно"
+          />
         </a>
 
         <nav className="desktop-nav" aria-label="Основная навигация">
@@ -683,8 +689,14 @@ export function MarriageAgencySite() {
 
       <footer className="site-footer">
         <div className="footer-main">
-          <a className="footer-wordmark" href="#top">
-            Брачное агентство
+          <a className="footer-wordmark" href="#top" aria-label="Взаимно — наверх">
+            <img
+              className="footer-brand-logo"
+              src="/images/logo-vzaimno-primary-light-v5.png"
+              width="1301"
+              height="244"
+              alt="Взаимно"
+            />
           </a>
           <p>Для серьёзных отношений в России и Китае</p>
           <nav aria-label="Навигация в подвале">
@@ -696,7 +708,7 @@ export function MarriageAgencySite() {
           </nav>
         </div>
         <div className="footer-bottom">
-          <span>© 2026 · Концепция сайта</span>
+          <span>© 2026 · Взаимно</span>
           <span>Конфиденциальность · Россия · Китай</span>
         </div>
       </footer>

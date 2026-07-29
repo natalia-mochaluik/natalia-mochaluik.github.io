@@ -44,11 +44,15 @@
 
 ## Brand identity
 
-- Current public name: «Брачное агентство».
-- The identity is deliberately typographic and restrained; no emblem is used
-  in the current version.
-- The service is described directly as a marriage agency for serious
-  relationships in Russia and China.
+- Selected brand: «ВЗАИМНО» / `VZAIMNO`.
+- The header and footer use the approved `VO + ВЗАИМНО` lockup; the browser
+  icon uses the isolated `VO` mark.
+- `VO` joins the first and last letters of `VZAIMNO` into one continuous route.
+- The main heading and service copy remain direct: «Брачное агентство для
+  серьёзных отношений», with personal selection, interviews and organised
+  meetings described in plain editorial language.
+- The logo does not require an explanatory brand-story block on the public
+  page; the earlier, more concise site copy remains intact.
 - No pink, hearts, rings or decorative wedding clichés.
 
 ## Interaction finish

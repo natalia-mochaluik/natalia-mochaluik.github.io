@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
     .split(",")[0]
     .trim();
   const origin = `${protocol}://${host}`;
-  const title = "Брачное агентство для серьёзных отношений";
+  const title = "Взаимно — брачное агентство для серьёзных отношений";
   const description =
     "Личный подбор, интервью и организация встреч в России и Китае. Конфиденциально, без публичных анкет.";
   const socialImage = `${origin}/og.png`;
@@ -24,7 +24,11 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL(origin),
     title,
     description,
-    applicationName: "Брачное агентство",
+    applicationName: "Взаимно",
+    icons: {
+      icon: "/images/logo-vzaimno-mark-v5.png",
+      apple: "/images/logo-vzaimno-mark-v5.png",
+    },
     alternates: {
       canonical: origin,
     },
@@ -39,7 +43,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: socialImage,
           width: 1200,
           height: 628,
-          alt: "Брачное агентство для серьёзных отношений — Россия и Китай",
+          alt: "Взаимно — брачное агентство в России и Китае",
         },
       ],
     },
