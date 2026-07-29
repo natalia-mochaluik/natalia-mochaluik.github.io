@@ -43,3 +43,16 @@
   claims are invented.
 - Contact details, team names, exact photographer experience, prices and legal
   documents remain editable launch inputs.
+
+## V2 page system
+
+- `/v2/`: contact strip; navigation; image-led hero; personal approach;
+  six-service catalog; four-step process; Russia–China direction; closed club;
+  psychologist and games-practices; Alexandra and Natalia; final questionnaire
+  CTA; contact footer.
+- `/v2/questionnaire/`: page introduction; four-step form; demo confirmation;
+  concise team explanation; contact footer.
+- Desktop hero is a `42/58` editorial split. Mobile uses a separate full-height
+  portrait followed by the copy, so faces never sit beneath the headline.
+- The service hover treatment adds depth through lift, border colour and shadow
+  without changing card width or causing neighbouring content to jump.

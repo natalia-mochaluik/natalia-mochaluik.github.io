@@ -2,13 +2,13 @@ import assert from "node:assert/strict";
 import { readFile, stat } from "node:fs/promises";
 import test from "node:test";
 
-async function render() {
+async function render(path = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
 
   return worker.fetch(
-    new Request("http://localhost/", {
+    new Request(`http://localhost${path}`, {
       headers: { accept: "text/html" },
     }),
     {
@@ -42,6 +42,82 @@ test("server-renders the Vzaimno identity with the original agency copy", async 
   assert.match(html, /профессиональным игропрактиком/i);
   assert.doesNotMatch(html, /Почему «Взаимно»|Первая и последняя буквы VZAIMNO/i);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape/i);
+});
+
+test("keeps V1 at the root and serves the separate Tiffany V2", async () => {
+  const [rootResponse, v2Response, questionnaireResponse] = await Promise.all([
+    render("/"),
+    render("/v2"),
+    render("/v2/questionnaire"),
+  ]);
+
+  assert.equal(rootResponse.status, 200);
+  assert.equal(v2Response.status, 200);
+  assert.equal(questionnaireResponse.status, 200);
+
+  const [rootHtml, v2Html, questionnaireHtml] = await Promise.all([
+    rootResponse.text(),
+    v2Response.text(),
+    questionnaireResponse.text(),
+  ]);
+
+  assert.match(rootHtml, /Брачное агентство/i);
+  assert.doesNotMatch(rootHtml, /Лучшие свахи/i);
+
+  assert.match(v2Html, /Лучшие свахи/);
+  assert.match(v2Html, /hero-young-international\.jpg/);
+  assert.match(v2Html, /\+7 917 767-52-20/);
+  assert.match(v2Html, /\+7 921 905-12-34/);
+  assert.match(v2Html, /Психолог для пар/);
+  assert.match(v2Html, /Игры-практики для девушек/);
+  assert.match(v2Html, /Александра и Наталья/);
+
+  assert.match(questionnaireHtml, /Кто вы\?/);
+  assert.match(questionnaireHtml, /Сколько вам лет\?/);
+  assert.match(questionnaireHtml, /Шаг 1 из 4/);
+  assert.match(questionnaireHtml, /Ответы не передаются и не сохраняются/i);
+});
+
+test("V2 assets and palette stay isolated from V1", async () => {
+  const [v2Css, desktopHero, mobileHero, russianCouple, chinaCouple] =
+    await Promise.all([
+      readFile(new URL("../app/v2/v2.module.css", import.meta.url), "utf8"),
+      stat(
+        new URL(
+          "../public/images/v2/hero-young-international.jpg",
+          import.meta.url,
+        ),
+      ),
+      stat(
+        new URL(
+          "../public/images/v2/hero-young-international-mobile.jpg",
+          import.meta.url,
+        ),
+      ),
+      stat(
+        new URL("../public/images/v2/couple-russia-young.jpg", import.meta.url),
+      ),
+      stat(
+        new URL("../public/images/v2/couple-china-young.jpg", import.meta.url),
+      ),
+    ]);
+
+  assert.ok(desktopHero.size > 0);
+  assert.ok(mobileHero.size > 0);
+  assert.ok(russianCouple.size > 0);
+  assert.ok(chinaCouple.size > 0);
+  assert.match(v2Css, /--tiffany:\s*#61b8b3/i);
+  assert.match(v2Css, /--ivory:\s*#f5efe3/i);
+  assert.match(v2Css, /--deep:\s*#123f3e/i);
+  assert.match(v2Css, /--bronze:\s*#b9975b/i);
+  assert.match(
+    v2Css,
+    /\.heroMedia\s*\{[^}]*grid-column:\s*2/s,
+  );
+  assert.match(
+    v2Css,
+    /@media \(max-width: 760px\)[\s\S]*\.heroMedia\s*\{[^}]*aspect-ratio:\s*4 \/ 5/s,
+  );
 });
 
 test("keeps the approved image, interaction fixes and local-only form state", async () => {

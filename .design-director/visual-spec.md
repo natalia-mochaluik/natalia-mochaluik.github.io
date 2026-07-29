@@ -100,3 +100,17 @@
 - Semantic landmarks and heading order.
 - Persistent form labels and explicit demo-state feedback.
 - Native anchors, keyboard-accessible tabs/menu/FAQ and reduced-motion support.
+
+## V2 visual specification
+
+- Deep sea / primary text and dark surfaces: `#123F3E`.
+- Muted Tiffany / primary CTA and active accents: `#61B8B3`.
+- Warm ivory / page surface: `#F5EFE3`.
+- Bronze gold / dividers and small highlights only: `#B9975B`.
+- Small text never uses ivory on Tiffany or bronze on ivory; deep sea is used on
+  both light surfaces to maintain contrast.
+- Header stack: `40 px` contact strip + `82 px` navigation on desktop; compact
+  responsive stack on mobile.
+- Primary controls use pill geometry; editorial cards use `12–20 px` radii and
+  restrained depth on hover.
+- V2 assets live under `public/images/v2/` and never replace V1 imagery.

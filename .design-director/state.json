@@ -4,9 +4,9 @@
   "project_root": "/Users/natalia/Documents/Брачное агенство",
   "current_stage": "visual-qa",
   "status": "complete",
-  "note": "Psychology and facilitated game-evening services added; dedicated mobile imagery keeps every photographed pair in frame",
+  "note": "V2 passed 1440x900 and 390x844 browser QA; all faces, contacts, routes and questionnaire interactions verified",
   "created_at": "2026-07-28T20:09:28+00:00",
-  "updated_at": "2026-07-29T13:24:29+03:00",
+  "updated_at": "2026-07-29T22:01:56+00:00",
   "history": [
     {
       "at": "2026-07-28T20:09:28+00:00",
@@ -259,6 +259,24 @@
       "stage": "visual-qa",
       "status": "complete",
       "note": "Responsive service cards and all couple photographs passed 1440x900 and 390x844 browser checks without horizontal overflow"
+    },
+    {
+      "at": "2026-07-29T21:50:02+00:00",
+      "stage": "build",
+      "status": "in_progress",
+      "note": "Building an isolated V2 at /v2 with Tiffany palette, younger imagery, direct contact strip and a separate questionnaire; V1 remains unchanged"
+    },
+    {
+      "at": "2026-07-29T22:01:56+00:00",
+      "stage": "build",
+      "status": "complete",
+      "note": "Isolated V2 and four-step questionnaire compile successfully while V1 remains unchanged"
+    },
+    {
+      "at": "2026-07-29T22:01:56+00:00",
+      "stage": "visual-qa",
+      "status": "complete",
+      "note": "V2 passed 1440x900 and 390x844 browser QA; all faces, contacts, routes and questionnaire interactions verified"
     }
   ]
 }

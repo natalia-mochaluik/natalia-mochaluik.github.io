@@ -39,3 +39,14 @@ Only `Home / first viewport` is generated during the next selection step. The re
 ## Mobile presentation
 
 For the selected composition, a separate `375 px` responsive frame will be created during page-system expansion. Mobile is not simulated by squeezing the desktop frame.
+
+## V2 required screens
+
+| Route | Purpose | Primary action |
+|---|---|---|
+| `/v2/` | Alternative Tiffany/ivory brand direction with younger imagery, direct contact strip, full service catalog and team positioning | Заполнить анкету |
+| `/v2/questionnaire/` | Private four-step intake covering identity, age, desired partner, geography, goals, services and contact preference | Завершить анкету |
+| `/` | Approved V1 comparison baseline; no V2 palette or content changes | Existing V1 action |
+
+V2 is tested independently at `1440 × 900` and `390 × 844`. The published
+paths must coexist so the two versions can be compared from separate URLs.

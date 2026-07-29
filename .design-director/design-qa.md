@@ -83,3 +83,25 @@
   before accepting real enquiries
 
 final result: passed
+
+## V2 QA — 2026-07-30
+
+- V1 remains server-rendered at `/`; V2 is isolated at `/v2` and its
+  questionnaire at `/v2/questionnaire`.
+- Desktop hero checked at `1440 × 900`: both people are fully visible, contact
+  strip is within the viewport and no horizontal overflow is present.
+- Mobile hero checked at `390 × 844`: the dedicated portrait source loads,
+  keeps both heads and faces in frame, and the H1 enters the first viewport.
+- Young Russian and Russian-Chinese portrait sections were checked on desktop
+  and mobile; natural portrait ratios prevent cropped heads.
+- Questionnaire checked at desktop and mobile widths. All four steps, required
+  fields, back/continue controls, interests, consent and demo completion work.
+- Step transitions return the mobile viewport to the beginning of the new form
+  step, eliminating mid-form jumps.
+- Exact palette tokens, V2 asset isolation, both telephone numbers, support
+  services and route separation are covered by rendered-site tests.
+- Production build completes without errors; all four rendered-site tests pass.
+- Remaining launch input: real MAX, VK and Telegram URLs plus production form
+  delivery and reviewed personal-data text.
+
+V2 final result: passed

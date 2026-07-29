@@ -141,3 +141,17 @@ The same copy and actions are used in all three composition candidates.
 - Every meaningful photograph has contextual alt text; decorative crops use empty alt.
 - `prefers-reduced-motion` reveals all content immediately and switches imagery without animated masking.
 - Native scroll, browser back behavior and anchor navigation remain intact.
+
+## V2 UX addendum
+
+- A compact contact strip precedes the main navigation and exposes both
+  telephone numbers plus MAX, VK and Telegram marks.
+- The main conversion changes from an interview anchor to a dedicated
+  questionnaire at `/v2/questionnaire/`.
+- The questionnaire is a four-step accessible form with visible progress,
+  persistent labels, back navigation, local validation and an explicit
+  demonstration-only completion state.
+- The reference-site mechanism is used only as a structural cue; its branding,
+  copy, statistics and visual design are not copied.
+- V2 mobile hero is image-first with a dedicated portrait source, preserving
+  both faces and hands without destructive cropping.

@@ -56,3 +56,22 @@
 - На первом запуске цены могут обсуждаться после интервью, а не публиковаться как жёсткий прайс.
 - Юридические основания для проверки личности, хранения анкет и публикации фотографий будут разработаны отдельно; сайт не должен обещать проверку, которой пока нет.
 - Сгенерированные пары используются как иллюстративные образы и не выдаются за клиентов, участников клуба или истории успеха.
+
+## V2 addendum — 2026-07-30
+
+- V1 remains live at `/` and must not change; the redesign is an isolated
+  comparison version at `/v2/`.
+- Audience broadens to people approximately `25–50`; the tone stays premium but
+  becomes younger, warmer and more direct.
+- Approved palette: muted Tiffany `#61B8B3`, warm ivory `#F5EFE3`, deep sea
+  `#123F3E`, bronze gold `#B9975B`.
+- Hero promise: `Лучшие свахи для серьёзных отношений`.
+- Required real contacts: `+7 917 767-52-20` and `+7 921 905-12-34`.
+- Required utility icons: MAX, VK and Telegram. URLs are not supplied and must
+  not be invented.
+- Required second screen: `/v2/questionnaire/`, including gender, age, partner
+  preferences, geography, interests and contact details.
+- About copy may name Alexandra and Natalia as two modern matchmakers with
+  extensive people-facing experience and higher psychological education.
+- Service catalog explicitly includes a professional couple psychologist and
+  facilitated games-practices for women with a professional game practitioner.

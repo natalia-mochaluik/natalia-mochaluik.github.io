@@ -88,3 +88,17 @@
 - **Reference 02:** legible split composition and a natural everyday human scene.
 - **Reference 05:** framed editorial modules and private-club atmosphere only.
 - No logos, branded components, copy or production imagery will be reused.
+
+## V2 art direction
+
+- Preserve the `VO + ВЗАИМНО` identity, recoloured into deep sea and ivory.
+- Use ivory as the dominant breathing surface, deep sea for authority, Tiffany
+  for primary actions and youthful energy, and bronze only for fine editorial
+  details.
+- The first viewport becomes an asymmetrical split: clear ivory proposition on
+  the left and the approved young Russian-Chinese couple on the right.
+- Photography represents the full `25–50` audience with an emphasis on
+  believable young adults in contemporary clothes. No suits as a shorthand for
+  status, no alcohol, hearts, pink or wedding clichés.
+- Mobile uses dedicated portrait compositions and shows the complete photograph
+  above the copy. No text is placed across faces.
