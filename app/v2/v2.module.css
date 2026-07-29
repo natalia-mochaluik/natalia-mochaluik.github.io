@@ -434,6 +434,13 @@
     var(--side);
 }
 
+.heroMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 18px;
+}
+
 .eyebrow,
 .sectionNumber {
   margin: 0;
@@ -451,6 +458,50 @@
   width: fit-content;
   padding-bottom: 8px;
   border-bottom: 1px solid var(--bronze);
+}
+
+.countryTabs {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.countryTabs button {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 12px 4px 7px;
+  border: 1px solid rgba(185, 151, 91, 0.48);
+  border-radius: 999px;
+  background: rgba(255, 250, 241, 0.66);
+  color: var(--deep);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 650;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.countryTabs button:hover {
+  border-color: var(--bronze);
+  box-shadow: 0 7px 18px rgba(185, 151, 91, 0.14);
+  transform: translateY(-1px);
+}
+
+.countryTabs .countryTabActive {
+  border-color: var(--deep);
+  background: var(--deep);
+  color: var(--ivory);
+  box-shadow: 0 8px 20px rgba(18, 63, 62, 0.14);
+}
+
+.heroRussiaImage {
+  object-position: 50% 24% !important;
 }
 
 .sectionNumberCountries {
@@ -1845,6 +1896,10 @@
     object-position: center 65%;
   }
 
+  .heroRussiaImage {
+    object-position: 50% 22% !important;
+  }
+
   .heroMedia::after {
     background: linear-gradient(
       0deg,
@@ -1861,6 +1916,12 @@
   .heroCopy {
     order: 1;
     padding: 48px var(--side) 42px;
+  }
+
+  .heroMeta {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
   }
 
   .hero h1 {

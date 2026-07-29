@@ -74,17 +74,27 @@ export function CountryPair({
       className={`${styles.countryPair} ${compact ? styles.countryPairCompact : ""}`}
       aria-label="Россия и Китай"
     >
-      <span
-        className={`${styles.countryFlag} ${styles.countryFlagRussia}`}
-        aria-hidden="true"
-        title="Россия"
-      />
-      <span
-        className={`${styles.countryFlag} ${styles.countryFlagChina}`}
-        aria-hidden="true"
-        title="Китай"
-      />
+      <CountryFlag country="russia" />
+      <CountryFlag country="china" />
     </span>
+  );
+}
+
+export function CountryFlag({
+  country,
+}: {
+  country: "russia" | "china";
+}) {
+  return (
+    <span
+      className={`${styles.countryFlag} ${
+        country === "russia"
+          ? styles.countryFlagRussia
+          : styles.countryFlagChina
+      }`}
+      aria-hidden="true"
+      title={country === "russia" ? "Россия" : "Китай"}
+    />
   );
 }
 

@@ -1,6 +1,7 @@
 "use client";
 
-import { CountryPair, V2Footer, V2Header } from "./components";
+import { useState } from "react";
+import { CountryFlag, CountryPair, V2Footer, V2Header } from "./components";
 import styles from "./v2.module.css";
 
 const services = [
@@ -66,6 +67,11 @@ const process = [
 ];
 
 export function V2Site() {
+  const [activeCountry, setActiveCountry] = useState<"russia" | "china">(
+    "china",
+  );
+  const isChina = activeCountry === "china";
+
   return (
     <div className={styles.page}>
       <a className={styles.skipLink} href="#v2-main">
@@ -76,30 +82,67 @@ export function V2Site() {
       <main id="v2-main">
         <section className={styles.hero} aria-labelledby="v2-hero-title">
           <div className={styles.heroMedia}>
-            <picture>
-              <source
-                media="(max-width: 760px)"
-                srcSet="/images/v2/hero-young-international-mobile.jpg"
-              />
+            {isChina ? (
+              <picture>
+                <source
+                  media="(max-width: 760px)"
+                  srcSet="/images/v2/hero-young-international-mobile.jpg"
+                />
+                <img
+                  src="/images/v2/hero-young-international.jpg"
+                  width="1536"
+                  height="1024"
+                  alt="Молодая русско-китайская пара разговаривает в современном интерьере"
+                  fetchPriority="high"
+                />
+              </picture>
+            ) : (
               <img
-                src="/images/v2/hero-young-international.jpg"
-                width="1536"
-                height="1024"
-                alt="Молодая международная пара разговаривает в современном интерьере"
-                fetchPriority="high"
+                className={styles.heroRussiaImage}
+                src="/images/v2/couple-russia-young.jpg"
+                width="1122"
+                height="1402"
+                alt="Молодая русская пара разговаривает в современном интерьере"
               />
-            </picture>
-            <span className={styles.imageLabel}>
-              <CountryPair compact />
-              Россия × Китай
+            )}
+            <span className={styles.imageLabel} aria-live="polite">
+              <CountryFlag country={activeCountry} />
+              {isChina ? "Китай" : "Россия"}
             </span>
           </div>
 
           <div className={styles.heroCopy}>
-            <p className={styles.eyebrow}>
-              <CountryPair />
-              <span>Брачное агентство «Взаимно» · Россия и Китай</span>
-            </p>
+            <div className={styles.heroMeta}>
+              <p className={styles.eyebrow}>
+                Брачное агентство «Взаимно»
+              </p>
+              <div
+                className={styles.countryTabs}
+                role="tablist"
+                aria-label="Направление знакомств"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={!isChina}
+                  className={!isChina ? styles.countryTabActive : ""}
+                  onClick={() => setActiveCountry("russia")}
+                >
+                  <CountryFlag country="russia" />
+                  Россия
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={isChina}
+                  className={isChina ? styles.countryTabActive : ""}
+                  onClick={() => setActiveCountry("china")}
+                >
+                  <CountryFlag country="china" />
+                  Китай
+                </button>
+              </div>
+            </div>
             <h1 id="v2-hero-title">
               Лучшие свахи
               <span>для серьёзных отношений</span>
