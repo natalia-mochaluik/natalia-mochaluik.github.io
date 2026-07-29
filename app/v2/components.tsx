@@ -34,16 +34,52 @@ function SocialMarks() {
   return (
     <span className={styles.socials} aria-label="Мы в социальных сетях">
       <SocialMark service="MAX">
-        <span className={styles.maxMark}>MAX</span>
+        <img
+          className={styles.socialLogo}
+          src="/images/v2/social/max.svg"
+          alt=""
+          width="20"
+          height="20"
+        />
       </SocialMark>
       <SocialMark service="ВКонтакте">
-        <span className={styles.vkMark}>VK</span>
+        <img
+          className={styles.socialLogo}
+          src="/images/v2/social/vk.svg"
+          alt=""
+          width="20"
+          height="20"
+        />
       </SocialMark>
       <SocialMark service="Telegram">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M20.8 4.2 3.9 10.7c-1.1.4-1.1 1.1-.2 1.4l4.3 1.3 1.7 5.2c.2.6.1.9.8.9.5 0 .8-.2 1.1-.5l2.1-2 4.4 3.2c.8.5 1.4.3 1.6-.8l2.9-13.8c.3-1.3-.5-1.9-1.8-1.4Zm-2.2 3.2-7.5 6.8-.3 3.3-1.3-4.2 8-5.1c.7-.4 1.4-1 1.1-.8Z" />
         </svg>
       </SocialMark>
+    </span>
+  );
+}
+
+export function CountryPair({
+  compact = false,
+}: {
+  compact?: boolean;
+}) {
+  return (
+    <span
+      className={`${styles.countryPair} ${compact ? styles.countryPairCompact : ""}`}
+      aria-label="Россия и Китай"
+    >
+      <span
+        className={`${styles.countryFlag} ${styles.countryFlagRussia}`}
+        aria-hidden="true"
+        title="Россия"
+      />
+      <span
+        className={`${styles.countryFlag} ${styles.countryFlagChina}`}
+        aria-hidden="true"
+        title="Китай"
+      />
     </span>
   );
 }
@@ -191,7 +227,10 @@ export function V2Footer() {
       </div>
       <div className={styles.footerBottom}>
         <span>© 2026 · Взаимно</span>
-        <span>Конфиденциально · Россия · Китай</span>
+        <span className={styles.footerCountries}>
+          <CountryPair compact />
+          Конфиденциально · Россия · Китай
+        </span>
       </div>
     </footer>
   );

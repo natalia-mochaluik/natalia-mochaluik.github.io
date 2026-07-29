@@ -1,6 +1,6 @@
 "use client";
 
-import { V2Footer, V2Header } from "./components";
+import { CountryPair, V2Footer, V2Header } from "./components";
 import styles from "./v2.module.css";
 
 const services = [
@@ -89,12 +89,16 @@ export function V2Site() {
                 fetchPriority="high"
               />
             </picture>
-            <span className={styles.imageLabel}>Россия × Китай</span>
+            <span className={styles.imageLabel}>
+              <CountryPair compact />
+              Россия × Китай
+            </span>
           </div>
 
           <div className={styles.heroCopy}>
             <p className={styles.eyebrow}>
-              Брачное агентство «Взаимно» · Россия и Китай
+              <CountryPair />
+              <span>Брачное агентство «Взаимно» · Россия и Китай</span>
             </p>
             <h1 id="v2-hero-title">
               Лучшие свахи
@@ -237,7 +241,10 @@ export function V2Site() {
             />
           </div>
           <div className={styles.geographyCopy}>
-            <p className={styles.sectionNumber}>04 · Россия и Китай</p>
+            <p className={`${styles.sectionNumber} ${styles.sectionNumberCountries}`}>
+              <CountryPair />
+              <span>04 · Россия и Китай</span>
+            </p>
             <p className={styles.miniLabel}>RU × CN</p>
             <h2>Расстояние — часть задачи, а не красивое обещание</h2>
             <p>
