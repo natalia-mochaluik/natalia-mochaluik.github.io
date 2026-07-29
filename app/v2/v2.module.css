@@ -10,7 +10,7 @@
   --muted: #607371;
   --line: rgba(18, 63, 62, 0.19);
   --light-line: rgba(245, 239, 227, 0.22);
-  --contact-height: 40px;
+  --contact-height: 48px;
   --nav-height: 82px;
   --side: clamp(22px, 4.2vw, 72px);
   --shell: 1440px;
@@ -89,8 +89,8 @@
 
 .contactBar {
   height: var(--contact-height);
-  background: var(--deep);
-  color: var(--ivory);
+  background: var(--tiffany);
+  color: var(--deep);
 }
 
 .contactInner {
@@ -104,7 +104,7 @@
 
 .contactPrompt {
   margin-right: 30px;
-  color: var(--tiffany-soft);
+  color: rgba(18, 63, 62, 0.72);
   font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -138,9 +138,9 @@
   justify-content: center;
   width: 27px;
   height: 27px;
-  border: 1px solid rgba(245, 239, 227, 0.4);
+  border: 1px solid rgba(18, 63, 62, 0.34);
   border-radius: 50%;
-  color: var(--ivory);
+  color: var(--deep);
   transition:
     border-color 180ms ease,
     background-color 180ms ease,
@@ -148,9 +148,9 @@
 }
 
 .socialMark:hover {
-  border-color: var(--tiffany);
-  background: var(--tiffany);
-  color: var(--deep);
+  border-color: var(--deep);
+  background: var(--deep);
+  color: var(--ivory);
 }
 
 .socialMark svg {
@@ -325,12 +325,13 @@
 }
 
 .primaryButton {
-  background: var(--tiffany);
-  color: var(--deep) !important;
+  background: var(--deep);
+  color: var(--ivory) !important;
 }
 
 .primaryButton:hover,
 .finalButton:hover {
+  background: var(--deep-soft);
   transform: translateY(-2px);
   box-shadow: 0 12px 28px rgba(18, 63, 62, 0.18);
 }
@@ -608,14 +609,19 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin-top: 94px;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  border-top: 1px solid rgba(185, 151, 91, 0.46);
+  border-bottom: 1px solid rgba(185, 151, 91, 0.46);
 }
 
 .valueRow article {
+  position: relative;
   min-height: 250px;
   padding: 30px 38px 40px 0;
-  border-left: 1px solid var(--line);
+  border-left: 1px solid rgba(185, 151, 91, 0.34);
+  transition:
+    background-color 220ms ease,
+    box-shadow 220ms ease,
+    transform 220ms ease;
 }
 
 .valueRow article:first-child {
@@ -624,6 +630,15 @@
 
 .valueRow article:not(:first-child) {
   padding-left: 38px;
+}
+
+.valueRow article:hover {
+  z-index: 1;
+  background: rgba(185, 151, 91, 0.055);
+  box-shadow:
+    inset 0 0 0 1px rgba(185, 151, 91, 0.64),
+    0 16px 38px rgba(185, 151, 91, 0.14);
+  transform: translateY(-5px);
 }
 
 .valueRow article > span {
@@ -691,9 +706,11 @@
 
 .serviceCard:hover {
   z-index: 1;
-  border-color: var(--tiffany);
+  border-color: var(--bronze);
   background: var(--ivory-bright);
-  box-shadow: 0 18px 44px rgba(18, 63, 62, 0.11);
+  box-shadow:
+    0 18px 44px rgba(18, 63, 62, 0.08),
+    0 0 0 1px rgba(185, 151, 91, 0.16);
   transform: translateY(-7px);
 }
 
@@ -1770,7 +1787,7 @@
 
 @media (max-width: 760px) {
   .page {
-    --contact-height: 58px;
+    --contact-height: 64px;
     --nav-height: 68px;
     --side: 18px;
   }
