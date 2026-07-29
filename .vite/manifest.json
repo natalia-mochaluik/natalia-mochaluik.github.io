@@ -1,4 +1,19 @@
 {
+  "_components-_LWjk3XA.css": {
+    "file": "assets/components-_LWjk3XA.css",
+    "src": "_components-_LWjk3XA.css"
+  },
+  "_components-d2VWXnEQ.js": {
+    "file": "assets/components-d2VWXnEQ.js",
+    "name": "components",
+    "imports": [
+      "_rolldown-runtime-S-ySWqyJ.js",
+      "_framework-CXnKph_e.js"
+    ],
+    "css": [
+      "assets/components-_LWjk3XA.css"
+    ]
+  },
   "_framework-CXnKph_e.js": {
     "file": "assets/framework-CXnKph_e.js",
     "name": "framework",
@@ -20,8 +35,29 @@
       "_framework-CXnKph_e.js"
     ]
   },
+  "app/v2/questionnaire/questionnaire.tsx": {
+    "file": "assets/questionnaire-CWpmvsZS.js",
+    "name": "questionnaire",
+    "src": "app/v2/questionnaire/questionnaire.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-S-ySWqyJ.js",
+      "_components-d2VWXnEQ.js",
+      "_framework-CXnKph_e.js"
+    ]
+  },
+  "app/v2/site.tsx": {
+    "file": "assets/site-B0bfvrIo.js",
+    "name": "site",
+    "src": "app/v2/site.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_components-d2VWXnEQ.js",
+      "_framework-CXnKph_e.js"
+    ]
+  },
   "node_modules/.pnpm/vinext@0.0.50_@vitejs+plugin-react@6.0.2_vite@8.0.13_@types+node@22.19.19_esbuild@0.28._6558342ba0b940cbd621b36b626ca262/node_modules/vinext/dist/shims/layout-segment-context.js": {
-    "file": "assets/layout-segment-context-C695D0Vw.js",
+    "file": "assets/layout-segment-context-Dj5zZl2Q.js",
     "name": "layout-segment-context",
     "src": "node_modules/.pnpm/vinext@0.0.50_@vitejs+plugin-react@6.0.2_vite@8.0.13_@types+node@22.19.19_esbuild@0.28._6558342ba0b940cbd621b36b626ca262/node_modules/vinext/dist/shims/layout-segment-context.js",
     "isDynamicEntry": true,
@@ -32,7 +68,7 @@
     ]
   },
   "virtual:vinext-app-browser-entry": {
-    "file": "assets/index-itiExVef.js",
+    "file": "assets/index-2RQisPV5.js",
     "name": "index",
     "src": "virtual:vinext-app-browser-entry",
     "isEntry": true,
@@ -41,6 +77,8 @@
       "_framework-CXnKph_e.js"
     ],
     "dynamicImports": [
+      "app/v2/site.tsx",
+      "app/v2/questionnaire/questionnaire.tsx",
       "virtual:vinext-app-browser-entry",
       "app/site.tsx",
       "node_modules/.pnpm/vinext@0.0.50_@vitejs+plugin-react@6.0.2_vite@8.0.13_@types+node@22.19.19_esbuild@0.28._6558342ba0b940cbd621b36b626ca262/node_modules/vinext/dist/shims/layout-segment-context.js"
