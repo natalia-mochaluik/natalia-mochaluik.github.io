@@ -197,7 +197,11 @@ export function MarriageAgencySite() {
 
       <main id="main-content">
         <section id="top" className="hero" aria-labelledby="hero-title">
-          <div id="hero-scene" className="hero-media" aria-live="polite">
+          <div
+            id="hero-scene"
+            className={`hero-media hero-media-${market}`}
+            aria-live="polite"
+          >
             <img
               key={market}
               className={`hero-image hero-image-${market}`}
@@ -381,8 +385,8 @@ export function MarriageAgencySite() {
             <figure className="service-image service-image-main">
               <img
                 src="/images/couple-russia-mature.jpg"
-                width="1536"
-                height="1024"
+                width="1122"
+                height="1402"
                 alt="Иллюстративный образ взрослой пары во время прогулки"
                 loading="lazy"
               />
@@ -498,8 +502,8 @@ export function MarriageAgencySite() {
             <figure className="club-image">
               <img
                 src="/images/couple-china-club-no-glass.jpg"
-                width="1536"
-                height="1024"
+                width="1003"
+                height="1568"
                 alt="Иллюстративный образ международной пары на закрытой встрече"
                 loading="lazy"
               />

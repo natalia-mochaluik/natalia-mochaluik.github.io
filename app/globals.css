@@ -1585,7 +1585,7 @@ img {
   }
 
   .hero-image-ru {
-    object-position: 68% 22%;
+    object-position: 62% 22%;
   }
 
   .hero-image-cn {
@@ -1740,8 +1740,21 @@ img {
     order: 1;
   }
 
+  .service-image {
+    aspect-ratio: 4 / 5;
+  }
+
+  .service-image img {
+    object-position: center;
+  }
+
   .club-image {
     order: 0;
+    aspect-ratio: 2 / 3;
+  }
+
+  .club-image img {
+    object-position: center;
   }
 
   .principles-manifesto {
@@ -1795,6 +1808,14 @@ img {
 
   .hero {
     min-height: 760px;
+  }
+
+  .hero-media-ru {
+    inset: -160px 0 160px;
+  }
+
+  .hero-image-ru {
+    object-position: 38% 22%;
   }
 
   .hero-inner {

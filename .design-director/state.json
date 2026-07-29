@@ -4,9 +4,9 @@
   "project_root": "/Users/natalia/Documents/Брачное агенство",
   "current_stage": "visual-qa",
   "status": "complete",
-  "note": "Approved VO and VZAIMNO identity restored with the original editorial marriage-agency copy; desktop and mobile QA passed",
+  "note": "Mobile hero focal placement and portrait couple photography corrected; production build and rendered-site tests passed",
   "created_at": "2026-07-28T20:09:28+00:00",
-  "updated_at": "2026-07-29T08:34:06+00:00",
+  "updated_at": "2026-07-29T12:52:36+03:00",
   "history": [
     {
       "at": "2026-07-28T20:09:28+00:00",
@@ -223,6 +223,24 @@
       "stage": "visual-qa",
       "status": "complete",
       "note": "Approved VO and VZAIMNO identity restored with the original editorial marriage-agency copy; desktop and mobile QA passed"
+    },
+    {
+      "at": "2026-07-29T09:39:47+00:00",
+      "stage": "build",
+      "status": "in_progress",
+      "note": "Correcting mobile hero focal placement and restoring portrait aspect ratios for couple photography"
+    },
+    {
+      "at": "2026-07-29T12:52:36+03:00",
+      "stage": "build",
+      "status": "complete",
+      "note": "Dedicated phone hero crop and natural portrait ratios implemented; production build completed without errors"
+    },
+    {
+      "at": "2026-07-29T12:52:36+03:00",
+      "stage": "visual-qa",
+      "status": "complete",
+      "note": "Mobile couple framing, intrinsic image dimensions and rendered-site tests passed"
     }
   ]
 }

@@ -48,6 +48,14 @@
 - The first process card now uses the same internal left padding as the other
   cards and lifts vertically without horizontal scale, so its hover surface no
   longer appears cramped against the left boundary.
+- The Russia hero now has a dedicated phone crop: the photograph is lifted and
+  its focal point is shifted so the man no longer disappears beneath the large
+  headline, while the desktop composition remains unchanged.
+- The mature-couple service photograph and the closed-club photograph use their
+  natural portrait proportions on mobile instead of being forced into shallow
+  landscape frames; faces and bodies are no longer cut off.
+- Intrinsic image dimensions now match the two portrait source files, preventing
+  unstable layout calculations while the photographs load.
 - The production build completes without errors.
 - The two rendered-site tests pass.
 - Desktop and mobile browser checks show no console errors or horizontal
