@@ -45,20 +45,38 @@ test("server-renders the Vzaimno identity with the original agency copy", async 
 });
 
 test("keeps V1 at the root and serves the separate Tiffany V2", async () => {
-  const [rootResponse, v2Response, questionnaireResponse] = await Promise.all([
+  const [
+    rootResponse,
+    v2Response,
+    questionnaireResponse,
+    chineseResponse,
+    chineseQuestionnaireResponse,
+  ] = await Promise.all([
     render("/"),
     render("/v2"),
     render("/v2/questionnaire"),
+    render("/v2/zh"),
+    render("/v2/zh/questionnaire"),
   ]);
 
   assert.equal(rootResponse.status, 200);
   assert.equal(v2Response.status, 200);
   assert.equal(questionnaireResponse.status, 200);
+  assert.equal(chineseResponse.status, 200);
+  assert.equal(chineseQuestionnaireResponse.status, 200);
 
-  const [rootHtml, v2Html, questionnaireHtml] = await Promise.all([
+  const [
+    rootHtml,
+    v2Html,
+    questionnaireHtml,
+    chineseHtml,
+    chineseQuestionnaireHtml,
+  ] = await Promise.all([
     rootResponse.text(),
     v2Response.text(),
     questionnaireResponse.text(),
+    chineseResponse.text(),
+    chineseQuestionnaireResponse.text(),
   ]);
 
   assert.match(rootHtml, /Брачное агентство/i);
@@ -76,6 +94,33 @@ test("keeps V1 at the root and serves the separate Tiffany V2", async () => {
   assert.match(questionnaireHtml, /Сколько вам лет\?/);
   assert.match(questionnaireHtml, /Шаг 1 из 4/);
   assert.match(questionnaireHtml, /Ответы не передаются и не сохраняются/i);
+
+  assert.match(chineseHtml, /认真为你牵线/);
+  assert.match(chineseHtml, /为什么选择我们/);
+  assert.match(chineseHtml, /女性心理游戏工作坊/);
+  assert.match(chineseHtml, /\/v2\/zh\/questionnaire\//);
+  assert.match(chineseQuestionnaireHtml, /你的性别是/);
+  assert.match(chineseQuestionnaireHtml, /第1步，共4步/);
+  assert.match(chineseQuestionnaireHtml, /回答不会发送，也不会被保存/);
+});
+
+test("V2 exposes a persistent RU and Chinese language choice", async () => {
+  const [components, layout, css] = await Promise.all([
+    readFile(new URL("../app/v2/components.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/v2/layout.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/v2/v2.module.css", import.meta.url), "utf8"),
+  ]);
+
+  assert.match(components, /vzaimno-v2-locale/);
+  assert.match(components, /\bRU\b/);
+  assert.match(components, /中文/);
+  assert.match(layout, /navigator\.languages/);
+  assert.match(layout, /\/v2\/zh\//);
+  assert.match(css, /\.languageSwitch/);
+  assert.match(
+    css,
+    /\.heroActions \.textLink\s*\{[^}]*border-bottom:\s*1px solid var\(--bronze\)[^}]*background:\s*transparent/s,
+  );
 });
 
 test("V2 assets and palette stay isolated from V1", async () => {

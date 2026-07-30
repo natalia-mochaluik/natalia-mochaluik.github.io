@@ -2,6 +2,11 @@
 
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { V2Footer, V2Header } from "../components";
+import {
+  localeRoutes,
+  questionnaireCopy,
+  type V2Locale,
+} from "../copy";
 import styles from "../v2.module.css";
 
 type FormData = {
@@ -34,13 +39,6 @@ const initialData: FormData = {
   consent: false,
 };
 
-const steps = [
-  { short: "О вас", title: "Давайте немного познакомимся" },
-  { short: "Запрос", title: "Кого вы хотите встретить" },
-  { short: "Формат", title: "Что вам сейчас особенно важно" },
-  { short: "Контакты", title: "Как с вами связаться" },
-];
-
 function Choice({
   name,
   value,
@@ -55,7 +53,9 @@ function Choice({
   children: React.ReactNode;
 }) {
   return (
-    <label className={`${styles.choice} ${selected ? styles.choiceSelected : ""}`}>
+    <label
+      className={`${styles.choice} ${selected ? styles.choiceSelected : ""}`}
+    >
       <input
         type="radio"
         name={name}
@@ -68,11 +68,13 @@ function Choice({
   );
 }
 
-export function Questionnaire() {
+export function Questionnaire({ locale = "ru" }: { locale?: V2Locale }) {
   const [step, setStep] = useState(0);
   const [data, setData] = useState<FormData>(initialData);
   const [submitted, setSubmitted] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
+  const copy = questionnaireCopy[locale];
+  const homeHref = localeRoutes[locale].home;
 
   useEffect(() => {
     if (step === 0) return;
@@ -97,9 +99,7 @@ export function Questionnaire() {
     if (step === 2) {
       return Boolean(data.goal);
     }
-    return Boolean(
-      data.name.trim() && data.contact.trim() && data.consent,
-    );
+    return Boolean(data.name.trim() && data.contact.trim() && data.consent);
   }, [data, step]);
 
   const setField = <Key extends keyof FormData>(
@@ -122,72 +122,82 @@ export function Questionnaire() {
     event.preventDefault();
     if (!canContinue) return;
     setSubmitted(true);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({
+      top: 0,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth",
+    });
   };
 
   if (submitted) {
     return (
-      <div className={styles.page}>
-        <V2Header />
+      <div className={styles.page} lang={locale === "zh" ? "zh-CN" : "ru"}>
+        <V2Header locale={locale} route="questionnaire" />
         <main className={styles.thankYou}>
           <div className={styles.thankYouMark} aria-hidden="true">
             VO
           </div>
-          <p className={styles.sectionNumber}>Анкета заполнена</p>
-          <h1>Спасибо, {data.name}.</h1>
-          <p>
-            Это демонстрационная версия V2, поэтому данные никуда не
-            отправились. Перед запуском мы подключим безопасную передачу анкеты
-            Александре и Наталье.
-          </p>
+          <p className={styles.sectionNumber}>{copy.thankYou.label}</p>
+          <h1>
+            {copy.thankYou.titlePrefix}
+            {data.name}
+            {copy.thankYou.titleSuffix}
+          </h1>
+          <p>{copy.thankYou.text}</p>
           <div className={styles.thankYouActions}>
             <a className={styles.primaryButton} href="tel:+79177675220">
-              Позвонить нам
+              {copy.thankYou.call}
             </a>
-            <a className={styles.textLink} href="/v2/">
-              Вернуться на сайт <span aria-hidden="true">→</span>
+            <a className={styles.textLink} href={homeHref}>
+              {copy.thankYou.back} <span aria-hidden="true">→</span>
             </a>
           </div>
         </main>
-        <V2Footer />
+        <V2Footer locale={locale} />
       </div>
     );
   }
 
   return (
-    <div className={styles.page}>
+    <div className={styles.page} lang={locale === "zh" ? "zh-CN" : "ru"}>
       <a className={styles.skipLink} href="#questionnaire-main">
-        Перейти к анкете
+        {copy.skip}
       </a>
-      <V2Header />
+      <V2Header locale={locale} route="questionnaire" />
 
       <main id="questionnaire-main" className={styles.questionnairePage}>
         <header className={styles.questionnaireIntro}>
-          <p className={styles.eyebrow}>Приватная анкета «Взаимно»</p>
-          <h1>Начнём с короткого знакомства</h1>
-          <p>
-            Ответьте на несколько вопросов. Анкета не публикуется и поможет нам
-            подготовиться к первой беседе.
-          </p>
+          <p className={styles.eyebrow}>{copy.intro.eyebrow}</p>
+          <h1>{copy.intro.title}</h1>
+          <p>{copy.intro.text}</p>
         </header>
 
         <div className={styles.questionnaireLayout}>
-          <aside className={styles.progressPanel} aria-label="Этапы анкеты">
+          <aside className={styles.progressPanel} aria-label={copy.progress.label}>
             <p>
-              Шаг {step + 1} из {steps.length}
+              {locale === "zh"
+                ? `${copy.progress.step}${step + 1}${copy.progress.of}${copy.steps.length}步`
+                : `${copy.progress.step} ${step + 1} ${copy.progress.of} ${copy.steps.length}`}
             </p>
             <div
               className={styles.progressTrack}
               role="progressbar"
               aria-valuemin={1}
-              aria-valuemax={steps.length}
+              aria-valuemax={copy.steps.length}
               aria-valuenow={step + 1}
-              aria-label={`Шаг ${step + 1} из ${steps.length}`}
+              aria-label={
+                locale === "zh"
+                  ? `${copy.progress.step}${step + 1}${copy.progress.of}${copy.steps.length}步`
+                  : `${copy.progress.step} ${step + 1} ${copy.progress.of} ${copy.steps.length}`
+              }
             >
-              <span style={{ width: `${((step + 1) / steps.length) * 100}%` }} />
+              <span
+                style={{ width: `${((step + 1) / copy.steps.length) * 100}%` }}
+              />
             </div>
             <ol>
-              {steps.map((item, index) => (
+              {copy.steps.map((item, index) => (
                 <li
                   key={item.short}
                   className={index === step ? styles.progressActive : ""}
@@ -197,9 +207,7 @@ export function Questionnaire() {
                 </li>
               ))}
             </ol>
-            <p className={styles.privacyNote}>
-              Ваши ответы видят только Александра и Наталья.
-            </p>
+            <p className={styles.privacyNote}>{copy.progress.privacy}</p>
           </aside>
 
           <form
@@ -209,13 +217,13 @@ export function Questionnaire() {
           >
             <div className={styles.formStepHeading}>
               <span>0{step + 1}</span>
-              <h2>{steps[step].title}</h2>
+              <h2>{copy.steps[step].title}</h2>
             </div>
 
             {step === 0 && (
               <div className={styles.formFields}>
                 <fieldset>
-                  <legend>Кто вы?</legend>
+                  <legend>{copy.fields.who}</legend>
                   <div className={styles.choiceGrid}>
                     <Choice
                       name="gender"
@@ -223,7 +231,7 @@ export function Questionnaire() {
                       selected={data.gender === "woman"}
                       onChange={(value) => setField("gender", value)}
                     >
-                      Женщина
+                      {copy.fields.woman}
                     </Choice>
                     <Choice
                       name="gender"
@@ -231,18 +239,18 @@ export function Questionnaire() {
                       selected={data.gender === "man"}
                       onChange={(value) => setField("gender", value)}
                     >
-                      Мужчина
+                      {copy.fields.man}
                     </Choice>
                   </div>
                 </fieldset>
                 <label className={styles.field}>
-                  <span>Сколько вам лет?</span>
+                  <span>{copy.fields.age}</span>
                   <input
                     type="number"
                     min="18"
                     max="99"
                     inputMode="numeric"
-                    placeholder="Например, 34"
+                    placeholder={copy.fields.agePlaceholder}
                     value={data.age}
                     onChange={(event) => setField("age", event.target.value)}
                   />
@@ -253,38 +261,37 @@ export function Questionnaire() {
             {step === 1 && (
               <div className={styles.formFields}>
                 <label className={styles.field}>
-                  <span>В каком городе вы живёте?</span>
+                  <span>{copy.fields.city}</span>
                   <input
                     type="text"
                     autoComplete="address-level2"
-                    placeholder="Ваш город"
+                    placeholder={copy.fields.cityPlaceholder}
                     value={data.city}
                     onChange={(event) => setField("city", event.target.value)}
                   />
                 </label>
                 <fieldset>
-                  <legend>Какая география знакомства вам подходит?</legend>
+                  <legend>{copy.fields.geography}</legend>
                   <div className={styles.choiceGrid}>
-                    {["Россия", "Китай", "Россия и Китай", "Обсудить лично"].map(
-                      (option) => (
-                        <Choice
-                          key={option}
-                          name="geography"
-                          value={option}
-                          selected={data.geography === option}
-                          onChange={(value) => setField("geography", value)}
-                        >
-                          {option}
-                        </Choice>
-                      ),
-                    )}
+                    {copy.fields.geographyOptions.map((option) => (
+                      <Choice
+                        key={option.value}
+                        name="geography"
+                        value={option.value}
+                        selected={data.geography === option.value}
+                        onChange={(value) => setField("geography", value)}
+                      >
+                        {option.label}
+                      </Choice>
+                    ))}
                   </div>
                 </fieldset>
                 <label className={styles.field}>
-                  <span>Предпочтительный возраст партнёра</span>
+                  <span>{copy.fields.partnerAge}</span>
                   <input
                     type="text"
-                    placeholder="Например, 30–42"
+                    inputMode="numeric"
+                    placeholder={copy.fields.partnerAgePlaceholder}
                     value={data.partnerAge}
                     onChange={(event) =>
                       setField("partnerAge", event.target.value)
@@ -297,51 +304,44 @@ export function Questionnaire() {
             {step === 2 && (
               <div className={styles.formFields}>
                 <fieldset>
-                  <legend>Каких отношений вы хотите?</legend>
+                  <legend>{copy.fields.goal}</legend>
                   <div className={styles.choiceGrid}>
-                    {[
-                      "Серьёзные отношения",
-                      "Семья и брак",
-                      "Хочу сначала познакомиться",
-                      "Обсудить лично",
-                    ].map((option) => (
+                    {copy.fields.goalOptions.map((option) => (
                       <Choice
-                        key={option}
+                        key={option.value}
                         name="goal"
-                        value={option}
-                        selected={data.goal === option}
+                        value={option.value}
+                        selected={data.goal === option.value}
                         onChange={(value) => setField("goal", value)}
                       >
-                        {option}
+                        {option.label}
                       </Choice>
                     ))}
                   </div>
                 </fieldset>
                 <fieldset>
-                  <legend>Что ещё вам интересно? Можно выбрать несколько.</legend>
+                  <legend>{copy.fields.interests}</legend>
                   <div className={styles.checkboxGrid}>
-                    {[
-                      "Закрытый клуб",
-                      "Фотосъёмка",
-                      "Психолог для пар",
-                      "Игры-практики",
-                    ].map((option) => (
-                      <label key={option} className={styles.checkboxChoice}>
+                    {copy.fields.interestOptions.map((option) => (
+                      <label
+                        key={option.value}
+                        className={styles.checkboxChoice}
+                      >
                         <input
                           type="checkbox"
-                          checked={data.interests.includes(option)}
-                          onChange={() => toggleInterest(option)}
+                          checked={data.interests.includes(option.value)}
+                          onChange={() => toggleInterest(option.value)}
                         />
-                        <span>{option}</span>
+                        <span>{option.label}</span>
                       </label>
                     ))}
                   </div>
                 </fieldset>
                 <label className={styles.field}>
-                  <span>Несколько слов о вашем запросе — по желанию</span>
+                  <span>{copy.fields.request}</span>
                   <textarea
                     rows={4}
-                    placeholder="Что для вас особенно важно?"
+                    placeholder={copy.fields.requestPlaceholder}
                     value={data.request}
                     onChange={(event) => setField("request", event.target.value)}
                   />
@@ -352,37 +352,37 @@ export function Questionnaire() {
             {step === 3 && (
               <div className={styles.formFields}>
                 <label className={styles.field}>
-                  <span>Как к вам обращаться?</span>
+                  <span>{copy.fields.name}</span>
                   <input
                     type="text"
                     autoComplete="name"
-                    placeholder="Имя"
+                    placeholder={copy.fields.namePlaceholder}
                     value={data.name}
                     onChange={(event) => setField("name", event.target.value)}
                   />
                 </label>
                 <label className={styles.field}>
-                  <span>Телефон или электронная почта</span>
+                  <span>{copy.fields.contact}</span>
                   <input
                     type="text"
                     autoComplete="tel"
-                    placeholder="+7 900 000-00-00"
+                    placeholder={copy.fields.contactPlaceholder}
                     value={data.contact}
                     onChange={(event) => setField("contact", event.target.value)}
                   />
                 </label>
                 <fieldset>
-                  <legend>Где вам удобнее получить ответ?</legend>
+                  <legend>{copy.fields.channel}</legend>
                   <div className={styles.choiceGrid}>
-                    {["Телефон", "MAX", "ВКонтакте", "Telegram"].map((option) => (
+                    {copy.fields.channelOptions.map((option) => (
                       <Choice
-                        key={option}
+                        key={option.value}
                         name="channel"
-                        value={option}
-                        selected={data.channel === option}
+                        value={option.value}
+                        selected={data.channel === option.value}
                         onChange={(value) => setField("channel", value)}
                       >
-                        {option}
+                        {option.label}
                       </Choice>
                     ))}
                   </div>
@@ -395,9 +395,7 @@ export function Questionnaire() {
                       setField("consent", event.target.checked)
                     }
                   />
-                  <span>
-                    Соглашаюсь на обработку данных для ответа на эту анкету.
-                  </span>
+                  <span>{copy.fields.consent}</span>
                 </label>
               </div>
             )}
@@ -409,21 +407,21 @@ export function Questionnaire() {
                   type="button"
                   onClick={() => setStep((current) => current - 1)}
                 >
-                  ← Назад
+                  {copy.actions.back}
                 </button>
               ) : (
-                <a className={styles.backButton} href="/v2/">
-                  ← На сайт
+                <a className={styles.backButton} href={homeHref}>
+                  {copy.actions.site}
                 </a>
               )}
-              {step < steps.length - 1 ? (
+              {step < copy.steps.length - 1 ? (
                 <button
                   className={styles.primaryButton}
                   type="button"
                   disabled={!canContinue}
                   onClick={() => setStep((current) => current + 1)}
                 >
-                  Продолжить
+                  {copy.actions.continue}
                 </button>
               ) : (
                 <button
@@ -431,37 +429,28 @@ export function Questionnaire() {
                   type="submit"
                   disabled={!canContinue}
                 >
-                  Завершить анкету
+                  {copy.actions.submit}
                 </button>
               )}
             </div>
-            <p className={styles.demoNote}>
-              Пока это демонстрационная версия: ответы не передаются и не
-              сохраняются.
-            </p>
+            <p className={styles.demoNote}>{copy.demo}</p>
           </form>
         </div>
       </main>
 
       <section className={styles.questionnaireAbout}>
         <div>
-          <p className={styles.sectionNumber}>Кто прочитает вашу анкету</p>
-          <h2>Александра и Наталья</h2>
+          <p className={styles.sectionNumber}>{copy.about.label}</p>
+          <h2>{copy.about.title}</h2>
         </div>
         <div>
-          <p>
-            Мы — современные свахи с большим опытом работы с людьми и высшим
-            психологическим образованием. Каждую анкету читаем сами и отвечаем
-            лично.
-          </p>
-          <p>
-            В команде также работают профессиональный фотограф, психолог для
-            пар и игропрактик, который проводит женские вечера.
-          </p>
+          {copy.about.paragraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
         </div>
       </section>
 
-      <V2Footer />
+      <V2Footer locale={locale} />
     </div>
   );
 }

@@ -7,9 +7,13 @@ export const metadata: Metadata = {
     "Расскажите немного о себе и о человеке, которого хотите встретить. Анкета брачного агентства «Взаимно».",
   alternates: {
     canonical: "/v2/questionnaire/",
+    languages: {
+      ru: "/v2/questionnaire/",
+      "zh-CN": "/v2/zh/questionnaire/",
+    },
   },
 };
 
 export default function QuestionnairePage() {
-  return <Questionnaire />;
+  return <Questionnaire locale="ru" />;
 }

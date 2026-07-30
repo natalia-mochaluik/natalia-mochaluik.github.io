@@ -105,3 +105,32 @@ final result: passed
   delivery and reviewed personal-data text.
 
 V2 final result: passed
+
+## V2 RU / 中文 localization QA — 2026-07-30
+
+- Russian and Simplified Chinese are available as complete route sets:
+  `/v2`, `/v2/questionnaire`, `/v2/zh` and
+  `/v2/zh/questionnaire`.
+- First-visit language bootstrap reads the browser language before rendering:
+  Chinese-language devices enter the Chinese route; other devices remain on
+  Russian. A manual choice is stored and takes precedence on later visits.
+- The language control was checked in both languages and moved to the contact
+  strip immediately before MAX, VK and Telegram. It is a compact text control,
+  not a competing pill CTA; the active language receives a restrained bronze
+  underline.
+- Desktop Russian and Chinese heroes were checked at `1440 × 900`: the
+  navigation, localized labels, questionnaire CTA and both faces remain inside
+  the viewport without horizontal overflow.
+- The Chinese questionnaire was checked at `390 × 844`; labels, step counter,
+  controls, consent and completion copy remain localized and readable.
+- The existing `390 × 844` responsive framing rules remain unchanged; the new
+  contact-strip control fits beside both telephone numbers and the three social
+  icons.
+- “Посмотреть услуги” is again a quiet text action with a one-pixel bronze
+  underline instead of a fully gold pill.
+- Visual comparison:
+  `.design-director/assets/qa/v2-language-comparison-1440x900.png`.
+- Production build and all five rendered-site tests pass. ESLint reports no
+  errors; only the existing image-optimization advisories remain.
+
+V2 localization result: passed

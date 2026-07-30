@@ -4,9 +4,9 @@
   "project_root": "/Users/natalia/Documents/Брачное агенство",
   "current_stage": "visual-qa",
   "status": "complete",
-  "note": "V2 passed 1440x900 and 390x844 browser QA; all faces, contacts, routes and questionnaire interactions verified",
+  "note": "Full Russian and Simplified Chinese V2 routes, device-language bootstrap, persistent compact contact-strip locale control and restrained bronze service link passed QA",
   "created_at": "2026-07-28T20:09:28+00:00",
-  "updated_at": "2026-07-29T22:01:56+00:00",
+  "updated_at": "2026-07-30T08:55:38+00:00",
   "history": [
     {
       "at": "2026-07-28T20:09:28+00:00",
@@ -277,6 +277,24 @@
       "stage": "visual-qa",
       "status": "complete",
       "note": "V2 passed 1440x900 and 390x844 browser QA; all faces, contacts, routes and questionnaire interactions verified"
+    },
+    {
+      "at": "2026-07-30T08:55:38+00:00",
+      "stage": "build",
+      "status": "in_progress",
+      "note": "Adding full Russian and Simplified Chinese routes, device-language bootstrap, persistent header locale control and restoring the restrained bronze service link"
+    },
+    {
+      "at": "2026-07-30T09:28:00+00:00",
+      "stage": "build",
+      "status": "complete",
+      "note": "Complete Russian and Simplified Chinese V2 routes, translated questionnaire, device-language bootstrap and persistent manual locale choice implemented"
+    },
+    {
+      "at": "2026-07-30T09:28:00+00:00",
+      "stage": "visual-qa",
+      "status": "complete",
+      "note": "Compact RU and Chinese selector in the Tiffany contact strip, localized desktop routes, Chinese questionnaire, restrained bronze service link, production build and five rendered tests passed"
     }
   ]
 }
